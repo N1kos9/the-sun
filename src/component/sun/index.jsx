@@ -38,7 +38,7 @@ function Sun() {
     fade={true} 
     />
   <mesh ref={sunRef}>
-    <sphereGeometry  args={[2, 32, 32]}/>
+    <sphereGeometry  args={[1.8, 32, 32]}/>
     <meshPhongMaterial />
     <meshStandardMaterial 
     map={texture} 
