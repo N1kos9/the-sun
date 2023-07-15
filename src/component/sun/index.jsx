@@ -1,16 +1,32 @@
-import { useLoader } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import SunTexture from '../textures/sun.jpg'
 import { TextureLoader } from 'three'
 import * as THREE from 'three'
+import { useRef } from 'react'
 
 function Sun() {
-    const [texture] = useLoader(TextureLoader, [SunTexture])
+  const [texture] = useLoader(TextureLoader, [SunTexture])
+
+  const sunRef = useRef()
+
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime()
+    sunRef.current.rotation.y = elapsedTime / 6
+  })
 
   return (<>
   {/* <ambientLight  intensity={0.5}/> */}
+  <directionalLight 
+  color={'0xffffff'} 
+  intensity={0.9}
+  />
   <hemisphereLight groundColor={'#000000'} />
-  <pointLight color='#fff' position={[2, -5, 2]} intensity={0.6} />
+  <pointLight 
+  color='#fff' 
+  position={[2, -5, 2]} 
+  intensity={0.5} 
+  />
   <Stars 
     radius={300}
     depth={60}
@@ -19,15 +35,20 @@ function Sun() {
     saturation={10} 
     fade={true} 
     />
-  <mesh>
+  <mesh ref={sunRef}>
     <sphereGeometry  args={[1, 32, 32]}/>
     <meshPhongMaterial />
-    <meshStandardMaterial map={texture} metalness={0.3}/>
+    <meshStandardMaterial 
+    map={texture} 
+    roughness={0.9}
+    />
     <OrbitControls 
-     enableZoom={true} zoomSpeed={0.6}
-     enablePan={true} panSpeed={0.5}
-     enableRotate={true} rotateSpeed={0.4}
-      
+     enableZoom={true} 
+     zoomSpeed={0.6}
+     enablePan={true} 
+     panSpeed={0.5}
+     enableRotate={true} 
+     rotateSpeed={0.4}     
       />
   </mesh>  
   </>
