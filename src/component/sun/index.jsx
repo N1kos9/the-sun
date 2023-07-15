@@ -1,12 +1,13 @@
 import { useFrame, useLoader } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import SunTexture from '../textures/sun.jpg'
+import NormalMapTexture from '../textures/normalMap.jpg'
 import { TextureLoader } from 'three'
 import * as THREE from 'three'
 import { useRef } from 'react'
 
 function Sun() {
-  const [texture] = useLoader(TextureLoader, [SunTexture])
+  const [texture, normalTexture] = useLoader(TextureLoader, [SunTexture, NormalMapTexture])
 
   const sunRef = useRef()
 
@@ -25,7 +26,7 @@ function Sun() {
   <pointLight 
   castShadow={true}
   color='#fff' 
-  position={[2, -5, 2]} 
+  position={[5, -5, 2]} 
   intensity={0.5} 
   />
   <Stars 

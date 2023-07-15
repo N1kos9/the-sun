@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Roboto&display=swap');
+
+.section2 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 47%;
+    left: 50%;
+    z-index: 999;
+    color: white;
+    text-align: center;
+    font-family: 'Gideon Roman', cursive;
+}
+.section2 
+h3,
+h1,
+h2 {
+    margin: 10px;
+
+}
+h3 {
+    font-size: 2rem;
+}
+h1 {
+    font-size: 5rem;
+    color: black    ;
+}
+h2 {
+    font-size: 2rem;
+}
