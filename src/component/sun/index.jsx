@@ -23,6 +23,7 @@ function Sun() {
   />
   <hemisphereLight groundColor={'#000000'} />
   <pointLight 
+  castShadow={true}
   color='#fff' 
   position={[2, -5, 2]} 
   intensity={0.5} 
@@ -36,7 +37,7 @@ function Sun() {
     fade={true} 
     />
   <mesh ref={sunRef}>
-    <sphereGeometry  args={[1, 32, 32]}/>
+    <sphereGeometry  args={[2, 32, 32]}/>
     <meshPhongMaterial />
     <meshStandardMaterial 
     map={texture} 
